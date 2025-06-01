@@ -59,9 +59,10 @@ jobs:
           path: ./dist
 
       - name: Deploy to Staging Server
-        uses: easingthemes/ssh-deploy@main  # 使用最新稳定版本
+        uses: easingthemes/ssh-deploy@5.1.0  # 使用最新稳定版本
         with:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}  # SSH 私钥
+          ARGS: "-rlgoDzvc -i"
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}          # 服务器 IP 或域名
           REMOTE_USER: ${{ secrets.REMOTE_USER }}          # SSH 登录用户名
           REMOTE_PORT: ${{ secrets.REMOTE_PORT }}          # SSH 端口（默认 22）
