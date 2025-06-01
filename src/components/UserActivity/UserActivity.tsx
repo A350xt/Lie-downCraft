@@ -153,7 +153,7 @@ const UserActivity: React.FC<UserActivityProps> = ({ userId }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/user/${userId}/activity`);
+        const response = await fetch(`http://api.lie-downcraft.cn/api/user/${userId}/activity`);
 
         if (!response.ok) {
           throw new Error('Failed to fetch user activity');

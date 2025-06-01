@@ -17,7 +17,7 @@ const DurationBarChart: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/users/total-duration');
+        const response = await axios.get('http://api.lie-downcraft.cn/api/users/total-duration');
         const rawData = response.data as Record<string, number>;
 
         // 转换数据结构
