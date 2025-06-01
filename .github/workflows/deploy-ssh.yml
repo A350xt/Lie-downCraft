@@ -73,7 +73,7 @@ jobs:
             echo "Before Deployment:"
             whoami
             ls -al /var/www/
-            rm -r website
+            rm -r /var/www/website
           SCRIPT_AFTER: |
             echo "After Deployment:"
             whoami
