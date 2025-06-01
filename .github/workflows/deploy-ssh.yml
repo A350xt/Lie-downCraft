@@ -20,8 +20,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-
+        uses: actions/checkout@v4.2.2
+          with:
+            lfs: true
+          
       - name: Cache node modules
         id: cache-npm
         uses: actions/cache@v3
