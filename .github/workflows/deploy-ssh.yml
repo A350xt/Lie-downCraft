@@ -66,15 +66,14 @@ jobs:
           REMOTE_USER: ${{ secrets.REMOTE_USER }}          # SSH 登录用户名
           REMOTE_PORT: ${{ secrets.REMOTE_PORT }}          # SSH 端口（默认 22）
           SOURCE: ./dist                                    # 本地构建目录
-          TARGET: ${{ secrets.REMOTE_TARGET }}             # 服务器目标路径（需存在）
+          TARGET: /var/www/                               # 服务器目标路径（需存在）
           EXCLUDE: "/dist/, /node_modules/"                # 排除目录（可选）
-          ARGS: "-rlgoDzvc -i"                             # rsync 参数（递归、压缩等）
           SCRIPT_BEFORE: |
             echo "Before Deployment:"
             whoami
-            ls -al /var/www/html
+            ls -al /var/www/
           SCRIPT_AFTER: |
             echo "After Deployment:"
             whoami
-            ls -al /var/www/html
+            ls -al /var/www/
             echo "RSYNC Output: $RSYNC_STDOUT"
