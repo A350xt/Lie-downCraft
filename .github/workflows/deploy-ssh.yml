@@ -59,16 +59,16 @@ jobs:
           path: ./dist
 
       - name: Deploy to Server via SSH
-        uses: easingthemes/ssh-deploy@v5.1.0  # 明确指定版本
+        uses: easingthemes/ssh-deploy@v5.1.0
         with:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_HOST: ${{ secrets.SSH_HOST }}    # 全大写命名
-          REMOTE_USER: ${{ secrets.SSH_USERNAME }}    # 全大写命名
-          REMOTE_PORT: ${{ secrets.SSH_PORT }}    # 全大写命名（可选，默认 22）
-          SOURCE: ./dist                              # 本地构建目录（可选，默认空）
-          TARGET: /var/www/       # 服务器目标路径（可选，默认空）
-          ARGS: "-rlgoDzvc -i"                       # rsync 参数（默认值）
-          SSH_CMD_ARGS: "-o StrictHostKeyChecking=no" # SSH 参数（默认值）
+          REMOTE_HOST: ${{ secrets.SSH_HOST }}
+          REMOTE_USER: ${{ secrets.SSH_USERNAME }}
+          REMOTE_PORT: ${{ secrets.SSH_PORT }}
+          SOURCE: ./website
+          TARGET: /var/www/website
+          ARGS: "-rlgoDzvc -i"
+          SSH_CMD_ARGS: "-o StrictHostKeyChecking=no"
           SCRIPT_BEFORE: |
             echo "Before Deployment:"
             whoami
@@ -76,5 +76,5 @@ jobs:
           SCRIPT_AFTER: |
             echo "After Deployment:"
             whoami
-            ls -al /var/www/
+            ls -al /var/www/website
             echo "RSYNC Output: $RSYNC_STDOUT"
