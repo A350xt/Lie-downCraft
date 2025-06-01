@@ -62,11 +62,11 @@ jobs:
         uses: easingthemes/ssh-deploy@v2.1.5
         with:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          HOST: ${{ secrets.SSH_HOST }}
-          USERNAME: ${{ secrets.SSH_USERNAME }}
-          PORT: ${{ secrets.SSH_PORT }}
-          REMOTE_PATH: /var/www/html
-          LOCAL_PATH: ./dist
-          EXEC: |
+          REMOTE_HOST: ${{ secrets.SSH_HOST }}
+          REMOTE_USER: ${{ secrets.SSH_USERNAME }}
+          REMOTE_PORT: ${{ secrets.SSH_PORT }}
+          SOURCE: ./dist
+          TARGET: /var/www/html
+          ARGS: |
             chmod -R 755 /var/www/html
             chown -R www-data:www-data /var/www/html
