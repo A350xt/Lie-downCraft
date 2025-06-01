@@ -58,15 +58,23 @@ jobs:
           name: dist
           path: ./dist
 
-      - name: Deploy to Server via SSH
-        uses: easingthemes/ssh-deploy@v2.1.5
+      - name: Deploy to Staging Server
+        uses: easingthemes/ssh-deploy@main  # 使用最新稳定版本
         with:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_HOST: ${{ secrets.SSH_HOST }}
-          REMOTE_USER: ${{ secrets.SSH_USERNAME }}
-          REMOTE_PORT: ${{ secrets.SSH_PORT }}
-          SOURCE: ./dist
-          TARGET: /var/www/html
-          ARGS: |
-            chmod -R 755 /var/www/html
-            chown -R www-data:www-data /var/www/html
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}  # SSH 私钥
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}          # 服务器 IP 或域名
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}          # SSH 登录用户名
+          REMOTE_PORT: ${{ secrets.REMOTE_PORT }}          # SSH 端口（默认 22）
+          SOURCE: ./dist                                    # 本地构建目录
+          TARGET: ${{ secrets.REMOTE_TARGET }}             # 服务器目标路径（需存在）
+          EXCLUDE: "/dist/, /node_modules/"                # 排除目录（可选）
+          ARGS: "-rlgoDzvc -i"                             # rsync 参数（递归、压缩等）
+          SCRIPT_BEFORE: |
+            echo "Before Deployment:"
+            whoami
+            ls -al /var/www/html
+          SCRIPT_AFTER: |
+            echo "After Deployment:"
+            whoami
+            ls -al /var/www/html
+            echo "RSYNC Output: $RSYNC_STDOUT"
