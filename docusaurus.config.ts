@@ -6,11 +6,11 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Lie-downCraft',
-  tagline: 'a palce for liedowners',
+  tagline: 'a place for liedowners',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://Lie-downCraft.icu:3000',
+  url: 'https://lie-downcraft.cn',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -70,7 +70,7 @@ const config: Config = {
       title: 'Lie-downCraft',
       logo: {
         alt: 'Lie-downCraft Logo',
-        src: 'img/logo.svg',
+        src: 'img/server-icon.png',
       },
       items: [
         {
@@ -84,13 +84,19 @@ const config: Config = {
           sidebarId: 'history',
           position: 'left',
           label: '历史',
-        },		
-        {to: '/blog', label: '更新日志', position: 'left'},
-		{
-            to: 'http://Lie-downCraft.icu:8123/',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'activity',
+          position: 'left',
+          label: '活跃统计',
+        },        		
+        {to: '/blog', label: '一些碎碎念', position: 'left'},
+		    {
+            to: 'http://map.lie-downcraft.cn/',
             label: '网页地图',
             position: 'left',
-          },
+        },
         {
           href: 'https://github.com/A350xt/Lie-downCraft',
           label: 'GitHub',
@@ -108,10 +114,14 @@ const config: Config = {
               label: '指南',
               to: '/docs/intro',
             },
-			{
+			      {
               label: '历史',
               to: '/docs/introduction',
             },
+            {
+              label: '活跃统计',
+              to: '/docs/activity/玩家在线时长',
+            }
           ],
         },
         {
@@ -123,7 +133,7 @@ const config: Config = {
             },
             {
               label: 'Starry Sakura Craft',
-              href: 'https://qm.qq.com/cgi-bin/qm/qr?k=v-STeZeUEP-VHoycXV6I3_0jkNQHWD56&jump_from=webapi&authKey=q02TuTv5EiCrz5KU/ug3K72H9j5+8wXt4H5EigGERH2OPK51puejTp1lPpl5Vgg4',
+              href: 'http://sscraft.natapp1.cc/',
             },
           ],
         },
@@ -141,7 +151,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Lie-downCraft Project, Inc. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,

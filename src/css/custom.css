@@ -1,0 +1,58 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+ /*
+<link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/qxs/dist/quan/result.css' />
+ */
+/* @import url('https://chinese-fonts-cdn.deno.dev/packages/qxs/dist/quan/result.css'); */
+
+/* Many Thanks to Mi Inc. credits for them!! */
+@import url('https://cdn-font.hyperos.mi.com/font/css?family=MiSans:100,200,300,400,450,500,600,650,700,900:Chinese_Simplify,Latin&display=swap');
+
+.cubic-font {
+  font-family: 'QuanPixel 8px';
+  font-weight: 'Regular';
+}
+
+.navbar__title {
+  font-family: 'QuanPixel 8px';
+  font-weight: 'Regular';
+}
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #1d528b;
+  --ifm-color-primary-dark: #1a4a7d;
+  --ifm-color-primary-darker: #194676;
+  --ifm-color-primary-darkest: #143961;
+  --ifm-color-primary-light: #205a99;
+  --ifm-color-primary-lighter: #215ea0;
+  --ifm-color-primary-lightest: #266bb5;
+  --ifm-code-font-size: 90%;
+}
+
+* {
+  /* font-family: source-serif-pro, Georgia, Cambria, "Times New Roman", Times, serif; */
+
+  font-family: "MiSans", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: #292929;
+  letter-spacing: 0.03em;
+}
+
+.docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+
+html[data-theme='dark'] * {
+  color: #ebf2fc;
+}
+
+html[data-theme='dark'] .docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.3);
+}
