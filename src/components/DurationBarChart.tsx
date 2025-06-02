@@ -80,7 +80,7 @@ const DurationBarChart: React.FC = () => {
               }}
             >
               <span className="duration-label">
-                {Math.round(item.duration)} 分钟
+                {Math.round(item.duration)} 小时
               </span>
             </div>
           </div>

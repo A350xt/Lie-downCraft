@@ -99,7 +99,7 @@ const ContributionCalendar: React.FC<{ contributions: ActivityData[] }> = ({ con
           key={i}
           className={styles.tile}
           data-level={c.level}
-          title={`${c.count} minutes on ${date.toISOString().split('T')[0]}`}
+          title={`${c.count} hours on ${date.toISOString().split('T')[0]}`}
           style={style}
         />
       );
@@ -124,7 +124,7 @@ const ContributionCalendar: React.FC<{ contributions: ActivityData[] }> = ({ con
 
       {/* 总时长 */}
       <div className={styles.total}>
-        {total} minutes in the last year
+        {total} hours in the last year
       </div>
 
       {/* 图例 */}
