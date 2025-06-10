@@ -151,7 +151,10 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Lie-downCraft Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Lie-downCraft Project, Inc. Built with Docusaurus.\n
+      <a href="https://beian.miit.gov.cn/" target="_blank">录ICP备2025166651号</a>
+      `,
+
     },
     prism: {
       theme: prismThemes.github,
