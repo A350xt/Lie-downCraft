@@ -17,7 +17,7 @@ const LoginTimeBarChart: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://47.122.27.73:5000/api/users/login-days');
+        const response = await axios.get('http://homea350ti.top:5000/api/users/login-days');
         const rawData = response.data as Record<string, number>;
 
         // 转换数据结构
