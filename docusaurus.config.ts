@@ -141,7 +141,7 @@ const config: Config = {
           title: 'More',
           items: [
             {
-              label: '更新日志',
+              label: '一些碎碎念',
               to: '/blog',
             },
             {
