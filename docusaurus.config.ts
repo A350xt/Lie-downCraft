@@ -40,7 +40,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/A350xt/Lie-downCraft',
+            'https://github.com/A350xt/Lie-downCraft/blob/main/',
         },
         blog: {
           showReadingTime: true,
@@ -152,7 +152,7 @@ const config: Config = {
         },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Lie-downCraft Project, Inc. Built with Docusaurus.\n
-      <a href="https://beian.miit.gov.cn/" target="_blank">录ICP备2025166651号</a>
+      <a href="https://beian.miit.gov.cn/" target="_blank">鲁ICP备2025166651号</a>
       `,
 
     },
