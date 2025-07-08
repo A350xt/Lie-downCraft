@@ -15,8 +15,9 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  min-width: 120px;
-  justify-content: flex-end;
+  min-width: 160px; /* 固定宽度，根据实际头像+用户名宽度调整 */
+  justify-content: flex-start; /* 改为 flex-start，确保内容左对齐 */
+  flex-shrink: 0; /* 防止容器被压缩 */
 }
 
 .player-avatar {
@@ -29,8 +30,12 @@
 
 .player-name {
   font-weight: bold;
-  min-width: 80px;
-  text-align: right;
+  width: 12ch; /* 使用字符单位，12个字符宽度，适合16字符限制 */
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 0;
 }
 
 .bar-container {
@@ -44,7 +49,6 @@
 
 .duration-bar {
   height: 100%;
-  /* 默认渐变色（蓝黄） */
   background: linear-gradient(90deg, #00bfff, #ffeb3b);
   border-radius: 12px;
   display: flex;
