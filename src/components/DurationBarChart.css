@@ -15,7 +15,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  min-width: 160px; /* 固定宽度，根据实际头像+用户名宽度调整 */
+  min-width: 180px; /* 固定宽度，根据实际头像+用户名宽度调整 */
   justify-content: flex-start; /* 改为 flex-start，确保内容左对齐 */
   flex-shrink: 0; /* 防止容器被压缩 */
 }
