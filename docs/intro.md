@@ -12,4 +12,4 @@ hide_comment: true
 
 ### 怎么进入服务器？
 
-通过加入审核群来加入服务器：[加群链接](https://qm.qq.com/cgi-bin/qm/qr?k=i61B_j00Ost-GtO5ZO4RuE4P4Lc4xZEf&jump_from=webapi&authKey=sNnwRvMER9I64d8KfFh0a8YwMDw8UHJt0PwhiheIRY4/XuoF6XOH6V4pms3VeEzW)
+通过加入审核群来加入服务器：[加群链接](https://qm.qq.com/cgi-bin/qm/qr?k=BWjjlavDkZap1K_LNbDoUvNlB-3_Smfa&jump_from=webapi&authKey=sBbcZ+urVAIG2/B0SJv8YJE+9cKYDR2sp1cdXSs7ry5X9JLSCeBF+Uo6hCCoG4AP)

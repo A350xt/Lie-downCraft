@@ -89,9 +89,9 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'activity',
           position: 'left',
-          label: '活跃统计',
+          label: '数据统计',
         },        		
-        {to: '/blog', label: '一些碎碎念', position: 'left'},
+        {to: '/members/total', label: '玩家列表', position: 'left'},
 		    {
             to: 'http://map.lie-downcraft.cn/',
             label: '网页地图',
@@ -119,8 +119,8 @@ const config: Config = {
               to: '/docs/introduction',
             },
             {
-              label: '活跃统计',
-              to: '/docs/activity/玩家在线时长',
+              label: '数据统计',
+              to: '/stats/activity/玩家在线时长',
             }
           ],
         },

@@ -1,0 +1,101 @@
+.player-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  padding: 1rem;
+  background: #f8f9fa;
+}
+
+.player-card {
+  display: block;
+  width: calc(50% - 1rem);
+  max-width: 300px;
+  margin: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.player-card-content {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 100px;
+  border: 1px solid #e9ecef;
+}
+
+.player-card-content:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.player-card-avatar img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  margin-right: 1rem;
+  border: 1px solid #dee2e6;
+  flex-shrink: 0;
+}
+
+.player-card-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.player-card-name-container {
+  display: flex;
+  align-items: center;
+  min-height: 1.5em;
+  margin-bottom: 0.2rem;
+}
+
+.player-card-name {
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
+.player-card-title {
+  font-size: 0.75rem;
+  margin-left: 0.5rem;
+  color: #6c757d;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.player-card-stat-row {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-top: 0.1rem;
+}
+
+.player-card-stat-row span {
+  white-space: nowrap;
+}
+
+.player-card-loading,
+.player-card-error {
+  width: calc(50% - 1rem);
+  max-width: 300px;
+  margin: 0.75rem;
+  padding: 1.5rem;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e9ecef;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
