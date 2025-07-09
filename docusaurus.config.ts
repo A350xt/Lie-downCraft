@@ -120,7 +120,7 @@ const config: Config = {
             },
             {
               label: '数据统计',
-              to: '/stats/activity/玩家在线时长',
+              to: '/docs/activity/玩家在线时长',
             }
           ],
         },
@@ -133,7 +133,7 @@ const config: Config = {
             },
             {
               label: 'Starry Sakura Craft',
-              href: 'http://sscraft.natapp1.cc/',
+              href: 'http://starry-sakura-craft.online/',
             },
           ],
         },
