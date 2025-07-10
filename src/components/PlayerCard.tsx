@@ -10,7 +10,7 @@ interface PlayerCardProps {
 const PlayerCard: React.FC<PlayerCardProps> = ({ username, duration, loginDays, title }) => {
   return (
     <a
-      href={`http://localhost:3000/docs/servermembers/${username}`}
+      href={`http://lie-downcraft.cn/docs/servermembers/${username}`}
       className="player-card"
     >
       <div className="player-card-content">
