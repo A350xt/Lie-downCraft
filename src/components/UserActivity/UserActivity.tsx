@@ -16,7 +16,7 @@ interface UserActivityProps {
 // 月份名称
 const MONTH_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 // 颜色等级阈值
-const LEVEL_THRESHOLDS = [0, 60, 120, 240, Infinity];
+const LEVEL_THRESHOLDS = [0, 2, 4, 6, Infinity];
 
 /**
  * 贡献日历组件
