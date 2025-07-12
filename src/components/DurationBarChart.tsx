@@ -32,7 +32,7 @@ const DurationBarChart: React.FC = () => {
         const maxDuration = dataArray[0]?.duration || 1;
         const processedData = dataArray.map(item => ({
           ...item,
-          percentage: ( item.duration  / maxDuration) * 100
+          percentage: Math.min(( item.duration  / maxDuration) * 100+15,100)
         }));
 
         setData(processedData);

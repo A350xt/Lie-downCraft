@@ -1,4 +1,4 @@
-/* 全局渐变背景 - 放在最外层容器 */
+/* 全局渐变背景 */
 .globalBackground {
   background: linear-gradient(
     to top,
@@ -8,70 +8,77 @@
   min-height: 100vh;
 }
 
-/* 基础视频容器 */
+/* 视频容器 - 改为相对定位，不再固定 */
 .heroBanner {
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
   height: 100vh;
   z-index: 10;
   overflow: hidden;
-  transition: transform 0.5s ease-out;
 }
 
-.heroBanner.scrolled {
-  transform: translateY(-100%);
-}
-
-.videoContainer {
-  width: 100%;
-  height: 100%;
-}
-
+/* 视频元素 */
 .heroVideo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: 0;
 }
 
-/* 主内容区域 */
-.mainContent {
-  padding-top: 100vh;
-  position: relative;
+/* 黑色遮罩层 */
+.videoOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* 30% 黑色遮罩 */
   z-index: 1;
+  pointer-events: none;
 }
 
-/* Hero内容样式保持 */
-.heroContent {
-  animation: fadeInUp 0.6s ease-out forwards;
-  padding: 4rem 0;
+/* 视频上的文字内容 */
+
+.heroTextOverlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  text-align: center;
+  color: white;
+  padding: 2rem;
+  width: 100%;
+  background: none;
+  box-shadow: none;
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* 标题样式 */
+
+
+/* 主内容区域 - 不再需要 padding-top: 100vh */
+.mainContent {
+  position: relative;
+  z-index: 11;
+  background-color: white;
+  padding-top: 2rem; /* 可选：为内容添加一点间距 */
 }
 
 /* 响应式适配 */
 @media screen and (max-width: 966px) {
-  .heroContent {
-    padding: 2rem;
+  .heroTextOverlay {
+    padding: 1rem;
   }
-  
-  .heroLogo {
-    width: 100% !important;
+
+  .hero__title {
+    font-size: 1.8rem;
   }
-}
-.teamlist {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  flex-direction: row;
+
+  .hero__subtitle {
+    font-size: 1rem;
+  }
 }

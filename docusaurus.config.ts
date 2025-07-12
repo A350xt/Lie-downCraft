@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Lie-downCraft',
-  tagline: 'a place for liedowners',
+  tagline: 'A place for liedowners.',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here

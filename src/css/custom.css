@@ -56,3 +56,22 @@ html[data-theme='dark'] * {
 html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
+@font-face {
+  font-family: 'england';
+  src: url('/fonts/england.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+.hero__title {
+  color: #ebf2fc;
+  margin-bottom: 1rem;
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.hero__subtitle {
+  color: #ebf2fc;
+  font-size: 2rem;
+  opacity: 0.9;
+  font-family: 'england', sans-serif ; /* 使用本地字体 */
+}
