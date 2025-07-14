@@ -62,16 +62,29 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'minecraft';
+  src: url('/fonts/MinecraftAE.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 .hero__title {
   color: #ebf2fc;
   margin-bottom: 1rem;
-  font-size: 4rem;
+  font-size: 5rem;
   font-weight: bold;
 }
 
 .hero__subtitle {
   color: #ebf2fc;
-  font-size: 2rem;
+  font-size: 3rem;
   opacity: 0.9;
-  font-family: 'england', sans-serif ; /* 使用本地字体 */
+  font-family: 'england', sans-serif ;
+}
+
+.hero__time {
+  color: #ffffff;
+  font-size: 2rem;
+  margin-top: 1rem;
+  font-family: 'minecraft', sans-serif ;
 }
