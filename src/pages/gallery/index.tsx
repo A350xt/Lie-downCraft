@@ -4,22 +4,26 @@ import styles from './gallery.module.css';
 
 const images = [
   {
+    id: 'image1',
     src: 'img/gallery/image1.png',
     title: '教堂',
     description: '石英与琉璃的邂逅，纯净与斑斓的交融。在神圣的光影交错间，寻找心灵的永恒归宿。设计与建造：Cloud_ling'
   },
   {
-    src: 'img/gallery/image1.png',
+    id: 'image2',
+    src: 'img/gallery/image2.png',
     title: '许愿树',
     description: '樱花满树，心愿满怀;让花朵带着愿望飞向天空的云朵间。设计与建造：Cloud_ling'
   },
   {
-    src: 'img/gallery/image1.png',
-    title: '许愿树',
-    description: '樱花满树，心愿满怀;让花朵带着愿望飞向天空的云朵间。设计与建造：Cloud_ling'
+    id: 'image3',
+    src: 'img/gallery/image3.png',
+    title: '高级建筑',
+    description: '精美的建筑设计展现了玩家们的创造力和艺术天赋。'
   },
   {
-    src: 'img/gallery/image1.png',
+    id: 'image4',
+    src: 'img/gallery/image4.png',
     title: '炼药机',
     description: '魔法，机械，炼金，工业：将平凡的水源化作生命的甘露。设计与建造：rhnmabj'
   }
@@ -30,6 +34,17 @@ export default function Gallery() {
   const [transitionPhase, setTransitionPhase] = useState('visible');
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [imagesLoaded, setImagesLoaded] = useState(new Set());
+
+  // 处理URL锚点导航
+  useEffect(() => {
+    const hash = window.location.hash.substring(1); // 移除 # 符号
+    if (hash) {
+      const imageIndex = images.findIndex(img => img.id === hash);
+      if (imageIndex !== -1) {
+        setCurrentImage(imageIndex);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     images.forEach((image, index) => {
