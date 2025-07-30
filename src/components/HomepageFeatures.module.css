@@ -1,11 +1,240 @@
 .features {
   display: flex;
   align-items: center;
-  padding: 2rem 0;
+  padding: 4rem 0;
   width: 100%;
+  background: #ffffff;
+  position: relative;
+}
+
+.features::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
 }
 
 .featureSvg {
   height: 200px;
   width: 200px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 3px solid rgba(255, 255, 255, 0.8);
+}
+
+.featureSvg:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+}
+
+.featureCard {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 1rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.featureCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #3498db, #2ecc71, #e74c3c);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+}
+
+.featureCard:hover::before {
+  opacity: 1;
+}
+
+.featureTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.featureTitle .emoji {
+  font-size: 1.8rem;
+  filter: none;
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+  background-clip: initial;
+}
+
+.featureTitle .text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.featureDescription {
+  line-height: 1.8;
+  color: #555;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.featureDescription strong {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.featureDescription em {
+  color: #7f8c8d;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.featureButton {
+  display: inline-block;
+  padding: 12px 24px;
+  margin-top: 1.5rem;
+  background: #bdc3c7;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.featureButton:hover {
+  background: #95a5a6;
+  text-decoration: none;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.featureButton:active {
+  transform: translateY(0);
+}
+
+/* 统一所有按钮为淡灰色主题 */
+.featureCard:nth-child(1) .featureButton {
+  background: #bdc3c7;
+}
+
+.featureCard:nth-child(1) .featureButton:hover {
+  background: #95a5a6;
+}
+
+.featureCard:nth-child(2) .featureButton {
+  background: #bdc3c7;
+}
+
+.featureCard:nth-child(2) .featureButton:hover {
+  background: #95a5a6;
+}
+
+.featureCard:nth-child(3) .featureButton {
+  background: #bdc3c7;
+}
+
+.featureCard:nth-child(3) .featureButton:hover {
+  background: #95a5a6;
+}
+
+/* 响应式设计 */
+@media (max-width: 996px) {
+  .features {
+    padding: 2rem 0;
+  }
+  
+  .featureCard {
+    margin: 0.5rem;
+    padding: 1.5rem;
+  }
+  
+  .featureSvg {
+    height: 150px;
+    width: 150px;
+  }
+  
+  .featureTitle {
+    font-size: 1.3rem;
+  }
+  
+  .featureDescription {
+    font-size: 0.9rem;
+  }
+  
+  .featureButton {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .featureCard {
+    margin: 0.5rem 0;
+    padding: 1rem;
+  }
+  
+  .featureSvg {
+    height: 120px;
+    width: 120px;
+  }
+  
+  .featureTitle {
+    font-size: 1.2rem;
+  }
+  
+  .featureButton {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    margin-top: 1rem;
+  }
+}
+
+/* 添加悬停动画 */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.featureSvg {
+  animation: float 6s ease-in-out infinite;
+}
+
+.featureSvg:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.featureSvg:nth-child(2) {
+  animation-delay: 2s;
+}
+
+.featureSvg:nth-child(3) {
+  animation-delay: 4s;
 }

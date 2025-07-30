@@ -166,6 +166,7 @@ const Timeline: React.FC = () => {
                     alt={event.title}
                     className={styles.eventImage}
                     onClick={() => handleImageClick(event.image)}
+
                     title="点击查看画廊"
                   />
                 )}

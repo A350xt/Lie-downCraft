@@ -1,0 +1,47 @@
+.membersContainer {
+  position: relative;
+  min-height: 100vh;
+  background-image: url('/img/gallery/image8.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.membersContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.85);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.membersContent {
+  position: relative;
+  z-index: 2;
+  padding: 40px 20px;
+}
+
+/* 覆盖 AllPlayersList 组件的不透明背景 */
+.membersContent :global(.player-card-container) {
+  background: transparent !important;
+}
+
+.title {
+  text-align: center;
+  font-size: 48px;
+  margin-bottom: 16px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 40px;
+  color: #666;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}

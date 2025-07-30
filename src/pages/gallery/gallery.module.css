@@ -145,7 +145,7 @@
   bottom: 40px;
   right: 40px;
   max-width: 400px;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(15px);
   color: white;
   padding: 2rem;
@@ -167,7 +167,8 @@
 .textBox h2 {
   margin: 0 0 1rem 0;
   font-size: 1.5rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+  color: #ffffff;
 }
 
 .textBox p {
@@ -175,7 +176,8 @@
   line-height: 1.6;
   font-size: 1rem;
   opacity: 0.95;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);
+  color: #ffffff;
 }
 
 .navigation {
@@ -244,4 +246,143 @@
   .navigation {
     bottom: 10px;
   }
+}
+
+/* 新增分类样式 */
+.categorySection {
+  margin-bottom: 15px;
+}
+
+.categoryTitle {
+  padding: 12px 15px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  border: 2px solid transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.categoryTitle:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateX(5px);
+}
+
+.categoryTitle.active {
+  background: rgba(52, 152, 219, 0.8);
+  border-color: #3498db;
+  box-shadow: 0 0 15px rgba(52, 152, 219, 0.4);
+}
+
+.imageList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-left: 15px;
+  padding-left: 15px;
+  border-left: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.imageMetadata {
+  margin-top: 10px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+}
+
+/* 缩略图网格样式 */
+.thumbnailGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+  margin-left: 15px;
+}
+
+.thumbnail {
+  position: relative;
+  cursor: pointer;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.thumbnail:hover {
+  transform: scale(1.05);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.thumbnailActive {
+  border-color: #3498db !important;
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.6);
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 60px;
+  object-fit: cover;
+  display: block;
+}
+
+.thumbnailOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+  color: white;
+  padding: 8px 4px 4px;
+  font-size: 10px;
+  line-height: 1.2;
+  text-align: center;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 30px;
+}
+
+.thumbnailOverlay span {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  font-weight: 500;
+}
+
+.categoryName {
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.imageCount {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9em;
+  font-weight: 400;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.imageInfo {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.imageInfo .imageCounter {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.85rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.imageInfo .imageAlt {
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-style: italic;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }

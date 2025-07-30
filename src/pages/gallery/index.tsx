@@ -1,71 +1,101 @@
 import Layout from '@theme/Layout';
 import { useState, useEffect } from 'react';
 import styles from './gallery.module.css';
+import galleryData from '../../data/gallery.json';
 
-const images = [
-  {
-    id: 'image1',
-    src: 'img/gallery/image1.png',
-    title: '教堂',
-    description: '石英与琉璃的邂逅，纯净与斑斓的交融。在神圣的光影交错间，寻找心灵的永恒归宿。设计与建造：Cloud_ling'
-  },
-  {
-    id: 'image2',
-    src: 'img/gallery/image2.png',
-    title: '许愿树',
-    description: '樱花满树，心愿满怀;让花朵带着愿望飞向天空的云朵间。设计与建造：Cloud_ling'
-  },
-  {
-    id: 'image3',
-    src: 'img/gallery/image3.png',
-    title: '高级建筑',
-    description: '精美的建筑设计展现了玩家们的创造力和艺术天赋。'
-  },
-  {
-    id: 'image4',
-    src: 'img/gallery/image4.png',
-    title: '炼药机',
-    description: '魔法，机械，炼金，工业：将平凡的水源化作生命的甘露。设计与建造：rhnmabj'
-  }
-];
+interface GalleryImage {
+  src: string;
+  alt: string;
+}
+
+interface GalleryItem {
+  id: string;
+  title: string;
+  description: string;
+  images: GalleryImage[];
+}
 
 export default function Gallery() {
-  const [currentImage, setCurrentImage] = useState(0);
+  const [currentCategory, setCurrentCategory] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [transitionPhase, setTransitionPhase] = useState('visible');
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [imagesLoaded, setImagesLoaded] = useState(new Set());
 
+  const currentItem = galleryData[currentCategory] as GalleryItem;
+  const currentImage = currentItem.images[currentImageIndex];
+
   // 处理URL锚点导航
   useEffect(() => {
-    const hash = window.location.hash.substring(1); // 移除 # 符号
+    const hash = window.location.hash.substring(1);
     if (hash) {
-      const imageIndex = images.findIndex(img => img.id === hash);
-      if (imageIndex !== -1) {
-        setCurrentImage(imageIndex);
+      const categoryIndex = galleryData.findIndex(item => item.id === hash);
+      if (categoryIndex !== -1) {
+        setCurrentCategory(categoryIndex);
+        setCurrentImageIndex(0);
+      }
+    } else {
+      // 如果没有锚点，设置默认锚点为第一个分类
+      const firstItem = galleryData[0];
+      if (firstItem) {
+        window.history.replaceState(null, '', `#${firstItem.id}`);
       }
     }
   }, []);
 
+  // 预加载所有图片
   useEffect(() => {
-    images.forEach((image, index) => {
-      const img = new Image();
-      img.onload = () => {
-        setImagesLoaded(prev => new Set([...prev, index]));
-      };
-      img.src = image.src;
+    galleryData.forEach((item, categoryIndex) => {
+      item.images.forEach((image, imageIndex) => {
+        const img = new Image();
+        img.onload = () => {
+          setImagesLoaded(prev => new Set([...prev, `${categoryIndex}-${imageIndex}`]));
+        };
+        img.src = image.src;
+      });
     });
   }, []);
 
-  const changeImage = (newIndex) => {
-    if (newIndex === currentImage || transitionPhase !== 'visible') return;
+  const changeCategory = (newCategoryIndex: number) => {
+    if (newCategoryIndex === currentCategory || transitionPhase !== 'visible') return;
     setTransitionPhase('fadeOut');
     setTimeout(() => {
-      setCurrentImage(newIndex);
+      setCurrentCategory(newCategoryIndex);
+      setCurrentImageIndex(0);
+      // 更新URL锚点为对应的分类ID
+      const newItem = galleryData[newCategoryIndex];
+      window.history.replaceState(null, '', `#${newItem.id}`);
       setTransitionPhase('fadeIn');
       setTimeout(() => {
         setTransitionPhase('visible');
       }, 50);
     }, 300);
+  };
+
+  const changeImage = (newImageIndex: number) => {
+    if (newImageIndex === currentImageIndex || transitionPhase !== 'visible') return;
+    setTransitionPhase('fadeOut');
+    setTimeout(() => {
+      setCurrentImageIndex(newImageIndex);
+      setTransitionPhase('fadeIn');
+      setTimeout(() => {
+        setTransitionPhase('visible');
+      }, 50);
+    }, 300);
+  };
+
+  const nextImage = () => {
+    const nextIndex = currentImageIndex < currentItem.images.length - 1 
+      ? currentImageIndex + 1 
+      : 0;
+    changeImage(nextIndex);
+  };
+
+  const prevImage = () => {
+    const prevIndex = currentImageIndex > 0 
+      ? currentImageIndex - 1 
+      : currentItem.images.length - 1;
+    changeImage(prevIndex);
   };
 
   return (
@@ -77,7 +107,7 @@ export default function Gallery() {
             transitionPhase === 'fadeIn' ? styles.fadeIn : 
             styles.visible
           }`}
-          style={{ backgroundImage: `url(${images[currentImage].src})` }}
+          style={{ backgroundImage: `url(${currentImage.src})` }}
         />
 
         <button 
@@ -89,20 +119,37 @@ export default function Gallery() {
 
         <div className={`${styles.sidebar} ${sidebarOpen ? styles.sidebarOpen : ''}`}>
           <div className={styles.sidebarContent}>
-            <h3>选择景观</h3>
-            {images.map((image, index) => (
-              <div
-                key={index}
-                className={`${styles.imageItem} ${index === currentImage ? styles.active : ''}`}
-                onClick={() => {
-                  changeImage(index);
-                  setSidebarOpen(false);
-                }}
-              >
-                <img src={image.src} alt={image.title} />
-                <span>{image.title}</span>
-                {!imagesLoaded.has(index) && (
-                  <div className={styles.loadingIndicator}>⟳</div>
+            <h3>画廊分类</h3>
+            {galleryData.map((item, categoryIndex) => (
+              <div key={item.id} className={styles.categorySection}>
+                <div
+                  className={`${styles.categoryTitle} ${categoryIndex === currentCategory ? styles.categoryActive : ''}`}
+                  onClick={() => changeCategory(categoryIndex)}
+                >
+                  <span className={styles.categoryName}>{item.title}</span>
+                  <span className={styles.imageCount}>({item.images.length})</span>
+                </div>
+                {categoryIndex === currentCategory && (
+                  <div className={styles.thumbnailGrid}>
+                    {item.images.map((image, imageIndex) => (
+                      <div
+                        key={imageIndex}
+                        className={`${styles.thumbnail} ${imageIndex === currentImageIndex ? styles.thumbnailActive : ''}`}
+                        onClick={() => {
+                          changeImage(imageIndex);
+                          setSidebarOpen(false);
+                        }}
+                      >
+                        <img src={image.src} alt={image.alt} />
+                        <div className={styles.thumbnailOverlay}>
+                          <span>{image.alt}</span>
+                        </div>
+                        {!imagesLoaded.has(`${categoryIndex}-${imageIndex}`) && (
+                          <div className={styles.loadingIndicator}>⟳</div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 )}
               </div>
             ))}
@@ -110,23 +157,26 @@ export default function Gallery() {
         </div>
 
         <div className={`${styles.textBox} ${transitionPhase !== 'visible' ? styles.textFadeOut : styles.textFadeIn}`}>
-          <h2>{images[currentImage].title}</h2>
-          <p>{images[currentImage].description}</p>
+          <h2>{currentItem.title}</h2>
+          <p>{currentItem.description}</p>
+          <div className={styles.imageInfo}>
+            <span className={styles.imageAlt}>{currentImage.alt}</span>
+          </div>
         </div>
 
         <div className={styles.navigation}>
           <button 
-            onClick={() => changeImage(currentImage > 0 ? currentImage - 1 : images.length - 1)}
+            onClick={prevImage}
             className={styles.navButton}
             disabled={transitionPhase !== 'visible'}
           >
             ‹
           </button>
           <span className={styles.imageCounter}>
-            {currentImage + 1} / {images.length}
+            {currentImageIndex + 1} / {currentItem.images.length}
           </span>
           <button 
-            onClick={() => changeImage(currentImage < images.length - 1 ? currentImage + 1 : 0)}
+            onClick={nextImage}
             className={styles.navButton}
             disabled={transitionPhase !== 'visible'}
           >
