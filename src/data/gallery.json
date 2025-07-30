@@ -5,7 +5,7 @@
     "description": "Lie-downCraft 服务器二周目正式开放，标志着社区的新开始。",
     "images": [
       {
-        "src": "img/gallery/image1.png",
+        "src": "/img/gallery/image1.png",
         "alt": "服务器开放仪式"
       }
     ]
@@ -16,7 +16,7 @@
     "description": "机械与建筑美学的融合，古典主义与工业文明的碰撞。机器部分由MinecraftBC设计，建筑部分由Ailica_X设计的巨型仓库。是一周目仓库终极进化。",
     "images": [
       {
-        "src": "img/gallery/image5.jpg",
+        "src": "/img/gallery/image5.jpg",
         "alt": "仓库2.0外观"
       }
     ]
@@ -27,7 +27,7 @@
     "description": "服务器持续发展中，更多精彩内容正在路上...",
     "images": [
       {
-        "src": "img/gallery/image2.png",
+        "src": "/img/gallery/image2.png",
         "alt": "建设现场"
       }
     ]
@@ -38,11 +38,11 @@
     "description": "石英与琉璃的邂逅，纯净与斑斓的交融。在神圣的光影交错间，寻找心灵的永恒归宿。设计与建造：Cloud_ling",
     "images": [
       {
-        "src": "img/gallery/image1.png",
+        "src": "/img/gallery/image1.png",
         "alt": "教堂正面视角"
       },
       {
-        "src": "img/gallery/image2.png", 
+        "src": "/img/gallery/image2.png", 
         "alt": "教堂内部视角"
       }
     ]
@@ -53,7 +53,7 @@
     "description": "樱花满树，心愿满怀;让花朵带着愿望飞向天空的云朵间。设计与建造：Cloud_ling",
     "images": [
       {
-        "src": "img/gallery/image2.png",
+        "src": "/img/gallery/image2.png",
         "alt": "许愿树全景"
       }
     ]
@@ -64,11 +64,11 @@
     "description": "精美的建筑设计展现了玩家们的创造力和艺术天赋。",
     "images": [
       {
-        "src": "img/gallery/image3.png",
+        "src": "/img/gallery/image3.png",
         "alt": "高级建筑外观"
       },
       {
-        "src": "img/gallery/image4.png",
+        "src": "/img/gallery/image4.png",
         "alt": "高级建筑细节"
       }
     ]
@@ -79,7 +79,7 @@
     "description": "魔法，机械，炼金，工业：将平凡的水源化作生命的甘露。设计与建造：rhnmabj",
     "images": [
       {
-        "src": "img/gallery/image4.png",
+        "src": "/img/gallery/image4.png",
         "alt": "炼药机装置"
       }
     ]

@@ -5,7 +5,7 @@
     "title": "二周目启航",
     "description": "Lie-downCraft 服务器二周目正式开放",
     "type": ["milestone"],
-    "image": "img/gallery/image1.png",
+    "image": "/img/gallery/image1.png",
     "details": "服务器在这一天正式开放，标志着 Lie-downCraft 社区的开始。"
   },
   {
@@ -14,7 +14,7 @@
     "title": "仓库2.0竣工",
     "description": "机械与建筑美学的融合，古典主义与工业文明的碰撞",
     "type": ["building", "machine"],
-    "image": "img/gallery/image5.jpg",
+    "image": "/img/gallery/image5.jpg",
     "details": "机器部分由MinecraftBC设计，建筑部分由Ailica_X设计的巨型仓库。是一周目仓库终极进化。"
   },
   {
@@ -23,7 +23,7 @@
     "title": "持续建设中",
     "description": "服务器持续发展中，更多精彩内容正在路上...",
     "type": ["ongoing"],
-    "image": "img/gallery/image2.png",
+    "image": "/img/gallery/image2.png",
     "details": "服务器仍在不断发展，玩家们继续创造着新的奇迹。"
   }
 ]
