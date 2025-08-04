@@ -25,13 +25,13 @@ const AllPlayersList: React.FC = () => {
         }
 
         // 获取用户名列表
-        const durationRes = await fetch('http://homea350ti.top:5000/api/users/total-duration');
+        const durationRes = await fetch('https://lie-downcraft.cn:5000/api/users/total-duration');
         if (!durationRes.ok) throw new Error('获取玩家列表失败');
         const durations = await durationRes.json();
         const usernames = Object.keys(durations);
 
         // 获取登录天数
-        const daysRes = await fetch('http://homea350ti.top:5000/api/users/login-days');
+        const daysRes = await fetch('https://lie-downcraft.cn:5000/api/users/login-days');
         if (!daysRes.ok) throw new Error('获取登录天数失败');
         const days = await daysRes.json();
 
@@ -53,7 +53,7 @@ const AllPlayersList: React.FC = () => {
             }
 
             try {
-              const titleRes = await fetch(`http://homea350ti.top:5000/api/user/preflex/${username}`);
+              const titleRes = await fetch(`https://lie-downcraft.cn:5000/api/user/preflex/${username}`);
               if (!titleRes.ok) return;
 
               const titleData = await titleRes.json();
