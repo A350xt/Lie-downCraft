@@ -1,0 +1,61 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+  min-height: 60vh;
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--ifm-color-primary);
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.downloadSection {
+  background-color: var(--ifm-card-background-color);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: var(--ifm-global-shadow-lw);
+  max-width: 600px;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.versionInfo {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.downloadButton {
+  display: inline-block;
+  background-color: var(--ifm-color-primary);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  margin-top: 1rem;
+}
+
+.downloadButton:hover {
+  background-color: var(--ifm-color-primary-dark);
+  color: white;
+  text-decoration: none;
+}
+
+.note {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--ifm-color-warning);
+}
