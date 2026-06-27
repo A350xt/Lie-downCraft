@@ -98,11 +98,6 @@ const config: Config = {
             position: 'left',
         },
         {
-          to: '/app-download',
-          label: 'APP 下载',
-          position: 'left',
-        },
-        {
           href: 'https://github.com/A350xt/Lie-downCraft',
           label: 'GitHub',
           position: 'right',
