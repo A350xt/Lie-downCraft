@@ -70,7 +70,7 @@ const config: Config = {
       title: 'Lie-downCraft',
       logo: {
         alt: 'Lie-downCraft Logo',
-        src: 'img/server-icon.png',
+        src: 'img/newicon.png',
       },
       items: [
         {
