@@ -14,6 +14,7 @@ import TOC from '@theme/TOC';
 import ContentVisibility from '@theme/ContentVisibility';
 import type {Props} from '@theme/BlogPostPage';
 import type {BlogSidebar} from '@docusaurus/plugin-content-blog';
+import type {ReactNode} from 'react';
 
 function BlogPostPageContent({
   sidebar,
@@ -30,8 +31,12 @@ function BlogPostPageContent({
     toc_max_heading_level: tocMaxHeadingLevel,
   } = frontMatter;
   
-    const commentElement = useRef(null);
+    const commentElement = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
+    if (!commentElement.current) {
+      return;
+    }
+
     // Update the document title using the browser API
     let s = document.createElement("script");
     s.src = "https://giscus.app/client.js";

@@ -17,6 +17,20 @@ interface UserActivityProps {
 const MONTH_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 // 颜色等级阈值
 const LEVEL_THRESHOLDS = [0, 2, 4, 6, Infinity];
+type MonthElement = React.ReactElement<{
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+}> | null;
+
+function getMonthGridColumn(month: MonthElement | undefined): number {
+  if (!React.isValidElement<{ style?: React.CSSProperties }>(month)) {
+    return 0;
+  }
+
+  const gridColumn = month.props.style?.gridColumn;
+
+  return typeof gridColumn === 'number' ? gridColumn : 0;
+}
 
 /**
  * 贡献日历组件
@@ -37,7 +51,7 @@ const ContributionCalendar: React.FC<{ contributions: ActivityData[] }> = ({ con
   const months = useMemo(() => {
     if (!contributions.length || !firstDate) return [];
 
-    const monthElements: React.ReactNode[] = [];
+    const monthElements: MonthElement[] = [];
     let latestMonth = -1;
 
     contributions.forEach((c, i) => {
@@ -63,29 +77,33 @@ const ContributionCalendar: React.FC<{ contributions: ActivityData[] }> = ({ con
     // 处理第一个月份标签对齐
     const updatedMonths = [...monthElements];
     if (updatedMonths.length > 0) {
-      const firstMonthName = updatedMonths[0]?.props?.children;
-      const expectedFirstMonth = MONTH_NAMES[firstDate.getMonth()];
-      if (firstMonthName === expectedFirstMonth) {
-        updatedMonths[0] = React.cloneElement(updatedMonths[0] as React.ReactElement, {
-          style: { ...(updatedMonths[0] as any).props.style, gridColumn: 2 }
-        });
+      const firstMonth = updatedMonths[0];
+
+      if (React.isValidElement<{ children?: React.ReactNode; style?: React.CSSProperties }>(firstMonth)) {
+        const firstMonthName = firstMonth.props.children;
+        const expectedFirstMonth = MONTH_NAMES[firstDate.getMonth()];
+        if (firstMonthName === expectedFirstMonth) {
+          updatedMonths[0] = React.cloneElement(firstMonth, {
+            style: { ...firstMonth.props.style, gridColumn: 2 }
+          });
+        }
       }
 
       // 处理月份标签重叠
       if (updatedMonths.length > 1 && 
-          updatedMonths[1]?.props?.style?.gridColumn - updatedMonths[0]?.props?.style?.gridColumn < 3) {
+          getMonthGridColumn(updatedMonths[1]) - getMonthGridColumn(updatedMonths[0]) < 3) {
         updatedMonths[0] = null;
       }
 
       // 处理最后一个月份标签超出范围
       if (updatedMonths.length && 
-          updatedMonths[updatedMonths.length - 1]?.props?.style?.gridColumn > 53) {
+          getMonthGridColumn(updatedMonths[updatedMonths.length - 1]) > 53) {
         updatedMonths[updatedMonths.length - 1] = null;
       }
     }
 
     return updatedMonths;
-  }, [contributions]);
+  }, [contributions, firstDate, startRow]);
 
   // 生成日期格子
   const tiles = useMemo(() => {

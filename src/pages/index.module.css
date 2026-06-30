@@ -5,14 +5,33 @@
     white 0%,
     rgba(255, 255, 255, 0.5) 100%
   );
-  min-height: 100vh;
+  min-height: calc(100vh - var(--ifm-navbar-height));
+}
+
+.homeScrollViewport {
+  height: calc(100vh - var(--ifm-navbar-height));
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scroll-behavior: smooth;
+  scroll-padding-top: 0;
+  scroll-snap-type: y proximity;
+}
+
+@media (min-width: 997px) {
+  .homeScrollViewport {
+    scroll-snap-type: y mandatory;
+  }
 }
 
 /* 视频容器 - 改为相对定位，不再固定 */
 .heroBanner {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - var(--ifm-navbar-height));
+  min-height: 560px;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
   z-index: 10;
   overflow: hidden;
 }
@@ -57,15 +76,34 @@
   box-shadow: none;
 }
 
-/* 标题样式 */
+.heroTextOverlay :global(.hero__title) {
+  color: #ebf2fc;
+  font-size: clamp(2.6rem, 7vw, 5rem);
+  line-height: 1.05;
+  margin-bottom: 1rem;
+  overflow-wrap: normal;
+  word-break: keep-all;
+}
 
+.heroTextOverlay :global(.hero__subtitle) {
+  color: #ebf2fc;
+  font-size: clamp(1.25rem, 3.8vw, 3rem);
+  line-height: 1.2;
+  opacity: 0.9;
+}
+
+.heroTextOverlay :global(.hero__time) {
+  color: #ffffff;
+  font-size: clamp(1rem, 2.4vw, 2rem);
+  line-height: 1.35;
+  margin-top: 1rem;
+}
 
 /* 主内容区域 - 不再需要 padding-top: 100vh */
 .mainContent {
   position: relative;
   z-index: 11;
   background-color: white;
-  padding-top: 2rem; /* 可选：为内容添加一点间距 */
 }
 
 /* 响应式适配 */
@@ -74,12 +112,8 @@
     padding: 1rem;
   }
 
-  .hero__title {
-    font-size: 1.8rem;
-  }
-
-  .hero__subtitle {
-    font-size: 1rem;
+  .heroTextOverlay :global(.hero__title) {
+    font-size: clamp(2.35rem, 10vw, 3.2rem);
   }
 }
 .teamlist {
@@ -87,4 +121,26 @@
   flex-wrap: wrap;
   justify-content: center;
   flex-direction: row;
+}
+
+@media screen and (max-width: 720px) {
+  .homeScrollViewport {
+    height: auto;
+    overflow-y: visible;
+    overscroll-behavior-y: auto;
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+  }
+
+  .heroBanner {
+    height: 100vh;
+    min-height: 520px;
+    scroll-snap-align: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .homeScrollViewport {
+    scroll-behavior: auto;
+  }
 }
