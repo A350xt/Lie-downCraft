@@ -79,6 +79,7 @@ const config: Config = {
           position: 'left',
           label: '指南',
         },
+        {to: '/announcements', label: '公告', position: 'left'},
         {
           type: 'docSidebar',
           sidebarId: 'history',
@@ -92,6 +93,7 @@ const config: Config = {
           label: '数据统计',
         },        		
         {to: '/members/total', label: '玩家列表', position: 'left'},
+        {to: 'pathname:///download/client.zip', label: '下载客户端', position: 'left'},
 		    {
             to: 'http://map.lie-downcraft.cn/',
             label: '网页地图',
@@ -130,10 +132,6 @@ const config: Config = {
             {
               label: 'Littleskin',
               href: 'https://littleskin.cn/',
-            },
-            {
-              label: 'Starry Sakura Craft',
-              href: 'http://starry-sakura-craft.online/',
             },
           ],
         },

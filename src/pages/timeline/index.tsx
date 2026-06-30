@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
-import { useHistory } from '@docusaurus/router';
 import styles from './timeline.module.css';
 import timelineData from '../../data/timeline.json';
 
@@ -12,13 +11,15 @@ interface TimelineEvent {
   description: string;
   type: ('milestone' | 'machine' | 'building' | 'event' | 'ongoing')[];
   image: string;
+  galleryId?: string;
   details: string;
 }
+
+const timelineEvents = timelineData as TimelineEvent[];
 
 const Timeline: React.FC = () => {
   const [visibleItems, setVisibleItems] = useState<Set<string>>(new Set());
   const [filter, setFilter] = useState<string>('all');
-  const history = useHistory();
 
   // 格式化日期显示
   const formatDate = (dateString: string): string => {
@@ -31,19 +32,15 @@ const Timeline: React.FC = () => {
   };
 
   // 过滤事件
-  const filteredEvents = timelineData.filter((event: TimelineEvent) => {
+  const filteredEvents = timelineEvents.filter((event) => {
     if (filter === 'all') return true;
     return event.type.includes(filter as any);
   });
 
-  // 处理图片点击，跳转到画廊
-  const handleImageClick = (imageUrl: string) => {
-    // 从图片URL提取对应的画廊ID
-    const imageName = imageUrl.split('/').pop()?.split('.')[0];
-    if (imageName) {
-      // 直接跳转到画廊页面并定位到对应图片
-      window.open(`/gallery#${imageName}`, '_blank');
-    }
+  const getGalleryHref = (event: TimelineEvent) => {
+    return event.galleryId
+      ? `/gallery/?item=${encodeURIComponent(event.galleryId)}`
+      : '/gallery/';
   };
 
   // 滚动动画效果
@@ -161,14 +158,18 @@ const Timeline: React.FC = () => {
 
                 {/* 事件图片 */}
                 {event.image && (
-                  <img
-                    src={event.image}
-                    alt={event.title}
-                    className={styles.eventImage}
-                    onClick={() => handleImageClick(event.image)}
-
-                    title="点击查看画廊"
-                  />
+                  <Link
+                    to={getGalleryHref(event)}
+                    className={styles.eventImageLink}
+                    aria-label={`在画廊中查看：${event.title}`}
+                  >
+                    <img
+                      src={event.image}
+                      alt={event.title}
+                      className={styles.eventImage}
+                      title="点击查看画廊"
+                    />
+                  </Link>
                 )}
               </div>
             </div>

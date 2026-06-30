@@ -1,0 +1,231 @@
+.todoPage {
+  --todo-ink: #0a0a0a;
+  --todo-charcoal: #222222;
+  --todo-slate: #45515e;
+  --todo-steel: #5f5f5f;
+  --todo-stone: #8e8e93;
+  --todo-canvas: #ffffff;
+  --todo-surface: #f7f8fa;
+  --todo-hairline: #e5e7eb;
+  --todo-hairline-soft: #eaecf0;
+  --todo-coral: #ff5530;
+  --todo-blue: #1456f0;
+  --todo-purple: #a855f7;
+  --todo-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+
+  background: var(--todo-canvas);
+  color: var(--todo-ink);
+  font-family:
+    "DM Sans",
+    MiSans,
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  letter-spacing: 0;
+  min-height: calc(100vh - var(--ifm-navbar-height));
+  padding: 72px 32px 88px;
+}
+
+.todoPage *,
+.todoPage *::before,
+.todoPage *::after {
+  box-sizing: border-box;
+  letter-spacing: 0;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1120px;
+}
+
+.hero {
+  align-items: end;
+  display: grid;
+  gap: 32px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  margin-bottom: 32px;
+}
+
+.hero h1 {
+  color: var(--todo-ink);
+  font-size: clamp(44px, 8vw, 80px);
+  font-weight: 600;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.hero p {
+  color: var(--todo-slate);
+  font-size: 18px;
+  line-height: 1.55;
+  margin: 18px 0 0;
+  max-width: 620px;
+}
+
+.summary {
+  background: var(--todo-ink);
+  border-radius: 24px;
+  color: #ffffff;
+  display: grid;
+  gap: 4px;
+  min-width: 180px;
+  padding: 24px;
+}
+
+.summary span {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.summary strong {
+  color: #ffffff;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.board {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.column {
+  background: var(--todo-surface);
+  border: 1px solid var(--todo-hairline);
+  border-radius: 24px;
+  box-shadow: var(--todo-shadow);
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+}
+
+.columnHeader {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.columnHeader h2 {
+  color: var(--todo-ink);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.count {
+  align-items: center;
+  background: var(--todo-canvas);
+  border: 1px solid var(--todo-hairline);
+  border-radius: 999px;
+  color: var(--todo-steel);
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 600;
+  height: 30px;
+  justify-content: center;
+  min-width: 30px;
+  padding: 0 10px;
+}
+
+.taskList {
+  display: grid;
+  gap: 12px;
+}
+
+.taskCard {
+  background: var(--todo-canvas);
+  border: 1px solid var(--todo-hairline-soft);
+  border-radius: 16px;
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+}
+
+.taskCard strong {
+  color: var(--todo-ink);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.taskCard p {
+  color: var(--todo-steel);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.meta {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag,
+.status {
+  border-radius: 999px;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  padding: 4px 10px;
+}
+
+.tag {
+  background: var(--todo-surface);
+  color: var(--todo-slate);
+}
+
+.status {
+  color: #ffffff;
+}
+
+.planning {
+  background: var(--todo-blue);
+}
+
+.active {
+  background: var(--todo-coral);
+}
+
+.later {
+  background: var(--todo-purple);
+}
+
+@media (max-width: 996px) {
+  .todoPage {
+    padding: 56px 20px 72px;
+  }
+
+  .hero {
+    align-items: start;
+    grid-template-columns: 1fr;
+  }
+
+  .summary {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .board {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .todoPage {
+    padding: 40px 14px 56px;
+  }
+
+  .column {
+    border-radius: 18px;
+    padding: 14px;
+  }
+}
